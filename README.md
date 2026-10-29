@@ -24,6 +24,10 @@ The interface and prompts are currently in Dutch.
 - qmake project configuration
 - JSON for initial game state
 
+## UML
+
+The project's UML class diagram is available in [KoningsBurchtUML.pdf](KoningsBurchtUML.pdf).
+
 ## Build and Run
 
 Open `konproj.pro` in Qt Creator, select a desktop Qt kit, then build and run. With Qt's command-line tools configured, the typical qmake workflow is:
@@ -36,19 +40,21 @@ make
 
 On macOS, the built application may instead be located in the generated `.app` bundle, depending on the selected Qt kit and build configuration.
 
-## Current Checkout Limitations
+## Game Data
 
-This checkout is not currently buildable as-is. `konproj.pro` references project files that are not present in the repository directory, including `board.cpp`, `building.cpp`, and related headers. Restore the missing files or update the project configuration before building.
-
-The game also loads its JSON data from a hardcoded Windows path in `game.cpp`. That path must be changed to the location of `koningsBurchtFile.json` (or resolved relative to the application). The JSON file is currently at the repository root, while `konproj.pro` refers to `files/koningsBurchtFile.json`.
+The initial game state is stored in `files/koningsBurchtFile.json` and bundled into the application by `gameData.qrc`. The game loads it as a Qt resource, so launching from a different working directory does not affect the data path.
 
 ## Main Files
 
 - `game.cpp`, `gameview.cpp`: game logic and interface coordination
-- `player.cpp`, `resources.cpp`: player and resource state
-- `messengercard.cpp`, `tradercard.cpp`, `masterBuilderCard.cpp`: character actions
+- `board.cpp`, `building.cpp`, `courier.cpp`, `defenceTower.cpp`: board and game systems
+- `cards.cpp`, `brickLayerCard.cpp`, `masterBuilderCard.cpp`, `messengercard.cpp`, `tradercard.cpp`: cards and character actions
+- `player.cpp`, `resources.cpp`, `helpersBuilding.cpp`: player, resource, and helper state
+- `*View.cpp` and matching headers: Qt graphics and interface components
 - `mainwindow.cpp`, `mainwindow.ui`: application window
-- `koningsBurchtFile.json`: initial board and player state
+- `files/koningsBurchtFile.json`: initial board and player state
+- `gameData.qrc`: embeds the game-state JSON in the application
+- `KoningsBurchtUML.pdf`: UML class diagram
 - `konproj.pro`: qmake project configuration
 
 This repository does not currently include automated tests or a separate rules manual. The gameplay description is based on the source code available here.

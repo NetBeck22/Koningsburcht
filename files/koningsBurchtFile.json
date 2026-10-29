@@ -4,7 +4,7 @@
     "round": 12
   },
   "building": {
-  "forgeSilver" : 1,
+    "forgeSilver": 1,
     "keep": {
       "available": 1,
       "status": true
@@ -48,11 +48,11 @@
     "clay": 13,
     "stone": 13,
     "silver": 13,
-    "playerSand" : 0,
-    "playerWood" : 0,
-    "playerClay" : 0,
-    "playerStone" : 0,
-    "playerSilver" : 0
+    "playerSand": 0,
+    "playerWood": 0,
+    "playerClay": 0,
+    "playerStone": 0,
+    "playerSilver": 0
   },
   "helpers": {
     "numberOfHelpers": 16,
@@ -127,10 +127,10 @@
     ]
   },
   "defenceTower": {
-      "sand": 1,
-      "wood": 1,
-      "clay": 1,
-      "stone": 1,
-      "silver": 1
+    "sand": 1,
+    "wood": 1,
+    "clay": 1,
+    "stone": 1,
+    "silver": 1
   }
 }

@@ -1,4 +1,7 @@
 #include "Game.h"
+#include <QFile>
+#include <QJsonDocument>
+#include <QJsonObject>
 /*auteur: Nette Beckers*/
 
 game::game(board *boardGame, building *buildingGame, courier *courierGame, helpersBuilding *helpersGame, player *playerOne, player *playerTwo, defenceTower *defenceTowerGame)
@@ -351,33 +354,34 @@ void game::endGame()
 //read fucntie om gegevens in te lezen
 void game::read()
 {
-    QFile koningsBurcht("C:/Users/nette/Documents/konproj/files/koningsBurchtFile.json");
+    QFile koningsBurcht(":/data/koningsBurchtFile.json");
     if(!koningsBurcht.open(QIODevice::ReadOnly|QIODevice::Text))
     {
-        EXIT_FAILURE;
+        qFatal("Could not open game data resource: %s", qPrintable(koningsBurcht.errorString()));
     }
-    else
-    {
-        QByteArray data = koningsBurcht.readAll();
-        koningsBurcht.close();
-        QJsonParseError jsonError;
-        QJsonDocument document = QJsonDocument::fromJson( data, &jsonError );
-        QJsonObject koningsBurchtObject = document.object();
-        QJsonObject courier = koningsBurchtObject.value("courier").toObject();
-        QJsonObject board = koningsBurchtObject.value("board").toObject();
-        QJsonObject building = koningsBurchtObject.value("building").toObject();
-        QJsonObject helpers = koningsBurchtObject.value("helpers").toObject();
-        QJsonObject playerOne = koningsBurchtObject.value("playerOne").toObject();
-        QJsonObject playerTwo = koningsBurchtObject.value("playerTwo").toObject();
-        QJsonObject defence = koningsBurchtObject.value("defenceTower").toObject();
 
-        m_boardGame->read(board);
-        m_buildingGame->read(building);
-        m_courierGame->read(courier);
-        m_courierGame->readCourier(courier);
-        m_helpersGame->read(helpers);
-        m_playerOneGame->read(playerOne);
-        m_playerTwoGame->read(playerTwo);
-        m_defenceTowerGame->read(defence);
+    QJsonParseError jsonError;
+    QJsonDocument document = QJsonDocument::fromJson(koningsBurcht.readAll(), &jsonError);
+    if(jsonError.error != QJsonParseError::NoError || !document.isObject())
+    {
+        qFatal("Invalid game data resource: %s", qPrintable(jsonError.errorString()));
     }
+
+    QJsonObject koningsBurchtObject = document.object();
+    QJsonObject courier = koningsBurchtObject.value("courier").toObject();
+    QJsonObject board = koningsBurchtObject.value("board").toObject();
+    QJsonObject building = koningsBurchtObject.value("building").toObject();
+    QJsonObject helpers = koningsBurchtObject.value("helpers").toObject();
+    QJsonObject playerOne = koningsBurchtObject.value("playerOne").toObject();
+    QJsonObject playerTwo = koningsBurchtObject.value("playerTwo").toObject();
+    QJsonObject defence = koningsBurchtObject.value("defenceTower").toObject();
+
+    m_boardGame->read(board);
+    m_buildingGame->read(building);
+    m_courierGame->read(courier);
+    m_courierGame->readCourier(courier);
+    m_helpersGame->read(helpers);
+    m_playerOneGame->read(playerOne);
+    m_playerTwoGame->read(playerTwo);
+    m_defenceTowerGame->read(defence);
 }
