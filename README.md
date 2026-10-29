@@ -26,7 +26,7 @@ The interface and prompts are currently in Dutch.
 
 ## UML
 
-The project's UML class diagram is available in [KoningsBurchtUML.pdf](KoningsBurchtUML.pdf).
+The project's UML class diagram is available in [docs/KoningsBurchtUML.pdf](docs/KoningsBurchtUML.pdf).
 
 ## Build and Run
 
@@ -42,19 +42,16 @@ On macOS, the built application may instead be located in the generated `.app` b
 
 ## Game Data
 
-The initial game state is stored in `files/koningsBurchtFile.json` and bundled into the application by `gameData.qrc`. The game loads it as a Qt resource, so launching from a different working directory does not affect the data path.
+The initial game state is stored in `data/koningsBurchtFile.json` and bundled into the application by `data/gameData.qrc`. The game loads it as a Qt resource, so launching from a different working directory does not affect the data path.
 
-## Main Files
+## Project Structure
 
-- `game.cpp`, `gameview.cpp`: game logic and interface coordination
-- `board.cpp`, `building.cpp`, `courier.cpp`, `defenceTower.cpp`: board and game systems
-- `cards.cpp`, `brickLayerCard.cpp`, `masterBuilderCard.cpp`, `messengercard.cpp`, `tradercard.cpp`: cards and character actions
-- `player.cpp`, `resources.cpp`, `helpersBuilding.cpp`: player, resource, and helper state
-- `*View.cpp` and matching headers: Qt graphics and interface components
-- `mainwindow.cpp`, `mainwindow.ui`: application window
-- `files/koningsBurchtFile.json`: initial board and player state
-- `gameData.qrc`: embeds the game-state JSON in the application
-- `KoningsBurchtUML.pdf`: UML class diagram
+- `src/model/`: board, buildings, players, resources, helpers, and game rules
+- `src/cards/`: card classes and character actions
+- `src/view/`: Qt graphics views and main window
+- `src/main.cpp`: application entry point
+- `data/`: starting game state and Qt resource file
+- `docs/KoningsBurchtUML.pdf`: UML class diagram
 - `konproj.pro`: qmake project configuration
 
 This repository does not currently include automated tests or a separate rules manual. The gameplay description is based on the source code available here.
