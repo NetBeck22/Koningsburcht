@@ -1,0 +1,136 @@
+{
+  "board": {
+    "bank": 82,
+    "round": 12
+  },
+  "building": {
+  "forgeSilver" : 1,
+    "keep": {
+      "available": 1,
+      "status": true
+    },
+    "tavern": {
+      "available": 1,
+      "status": true
+    },
+    "bigGate": {
+      "available": 1,
+      "status": true
+    },
+    "smallGate": {
+      "available": 1,
+      "status": true
+    },
+    "stable": {
+      "available": 1,
+      "status": true
+    },
+    "servants": {
+      "available": 1,
+      "status": true
+    },
+    "palace": {
+      "available": 1,
+      "status": true
+    },
+    "house": {
+      "available": 6,
+      "status": true
+    },
+    "tower": {
+      "available": 10,
+      "status": true
+    }
+  },
+  "courier": {
+    "sand": 18,
+    "wood": 16,
+    "clay": 13,
+    "stone": 13,
+    "silver": 13,
+    "playerSand" : 0,
+    "playerWood" : 0,
+    "playerClay" : 0,
+    "playerStone" : 0,
+    "playerSilver" : 0
+  },
+  "helpers": {
+    "numberOfHelpers": 16,
+    "player": 1,
+    "helperKeep": 0,
+    "helperPalace": [
+      0,
+      0
+    ],
+    "helperSmallGate": 0,
+    "helperBigGate": 0,
+    "helperServants": [
+      0,
+      0,
+      0
+    ],
+    "helperForge": [
+      0,
+      0
+    ],
+    "helperStable": [
+      0,
+      0
+    ],
+    "helperTavern": [
+      0,
+      0
+    ],
+    "helperMarket": [
+      0,
+      0
+    ]
+  },
+  "playerOne": {
+    "character": 0,
+    "points": 0,
+    "cash": 3,
+    "helpers": 6,
+    "resources": {
+      "sand": 1,
+      "wood": 1,
+      "clay": 0,
+      "stone": 0,
+      "silver": 0
+    },
+    "first": false,
+    "cards": [
+      true,
+      true,
+      true,
+      true
+    ]
+  },
+  "playerTwo": {
+    "character": 0,
+    "points": 0,
+    "cash": 3,
+    "helpers": 6,
+    "resources": {
+      "sand": 1,
+      "wood": 1,
+      "clay": 0,
+      "stone": 0,
+      "silver": 0
+    },
+    "first": false,
+    "cards": [
+      true,
+      true,
+      true,
+      true
+    ]
+  },
+  "defenceTower": {
+      "sand": 1,
+      "wood": 1,
+      "clay": 1,
+      "stone": 1,
+      "silver": 1
+  }
+}
